@@ -10,7 +10,7 @@ const limiter = require('./middlewares/rate-limiter');
 const routes = require('./routes/index');
 const errorHandler = require('./middlewares/error-handler');
 
-const { PORT = 3000 } = process.env;
+const { PORT, MONGO_URL } = process.env;
 const app = express();
 
 app.use(cors({
@@ -19,7 +19,7 @@ app.use(cors({
 }));
 
 // подключаемся к серверу mongo
-mongoose.connect('mongodb://127.0.0.1:27017/bitfilmsdb')
+mongoose.connect(MONGO_URL)
   .then(() => {
     console.log('Connected to bitfilmsdb');
   });
