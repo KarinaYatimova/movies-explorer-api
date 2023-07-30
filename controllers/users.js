@@ -3,7 +3,6 @@ const { NODE_ENV, JWT_SECRET } = process.env;
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
-const DEV_JWT_SECRET = require('../utils/constants');
 
 const BadRequestError = require('../errors/BadRequestError');
 const NotFoundError = require('../errors/NotFoundError');
@@ -77,7 +76,7 @@ const login = (req, res, next) => {
       // создадим токен
       const token = jwt.sign(
         { _id: user._id },
-        NODE_ENV === 'production' ? JWT_SECRET : DEV_JWT_SECRET,
+        NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret',
         { expiresIn: '7d' }, // токен будет просрочен через 7 дней после создания
       );
 
