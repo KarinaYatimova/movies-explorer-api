@@ -14,7 +14,7 @@ const { PORT = 3000 } = process.env;
 const app = express();
 
 app.use(cors({
-  origin: 'https://movies.yatimova.nomoreparties.co',
+  origin: 'https://movies.yatimova.nomoredomainsicu.ru',
   credentials: true,
 }));
 
